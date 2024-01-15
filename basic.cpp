@@ -15,7 +15,7 @@ void mm_All(const int n, const double *A, const double *B, double *C)
     const int UNROLL = 8;
     int rest = n % (4 * UNROLL);
 
-#pragma omp parallel for num_threads(omp_get_max_threads())
+    #pragma omp parallel for num_threads(omp_get_max_threads())
     for (int j = 0; j < n; j++)
     {
         for (int k = 0; k < n; k++)
@@ -74,3 +74,5 @@ int main()
 
     return 0;
 }
+
+
