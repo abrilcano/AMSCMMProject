@@ -4,6 +4,9 @@
 #include <time.h>
 #include <immintrin.h>
 #include <cuda.h>
+#include <algorithm>
+#include <random>
+
 
 #define MATRIX_SIZE 8192
 #define CPU_MATRIX_SIZE 1024
@@ -12,6 +15,7 @@ __global__ void gpu_matrix_mult(double *a, double *b, double *c, int n)
 {
   int row = blockIdx.y * blockDim.y + threadIdx.y;
   int col = blockIdx.x * blockDim.x + threadIdx.x;
+
   if (col < n && row < n)
   {
     int sum = 0;
@@ -21,6 +25,7 @@ __global__ void gpu_matrix_mult(double *a, double *b, double *c, int n)
     }
     c[row * n + col] = sum;
   }
+  
 }
 
 
@@ -43,7 +48,7 @@ int main(int argc, char const *argv[])
     {
       for (int j = 0; j < MATRIX_SIZE; ++j)
       {
-        a[i * MATRIX_SIZE + j] = 2;
+        a[i * MATRIX_SIZE + j] = (double(rand() % 50))/10.0;
       }
     }
 
@@ -52,7 +57,7 @@ int main(int argc, char const *argv[])
     {
       for (int j = 0; j < MATRIX_SIZE; ++j)
       {
-        b[i * MATRIX_SIZE + j] = 3;
+        b[i * MATRIX_SIZE + j] = (double(rand() % 50))/10.0;
       }
     }
 
