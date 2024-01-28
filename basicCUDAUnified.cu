@@ -76,7 +76,7 @@ int main(int argc, char const *argv[])
     cudaEventRecord(start, 0);
     gpu_matrix_mult<<<dimGrid, dimBlock>>>(a, b, c, MATRIX_SIZE);
     //Synchronize threads
-    cudaThreadSynchronize();
+    cudaDeviceSynchronize();
 
     //Terminate time counting
     cudaEventRecord(stop, 0);
