@@ -5,9 +5,7 @@
 #include <immintrin.h>
 #include <iostream>
 #include <chrono>
-// #include <cuda.h>
 
-#define GPU_MATRIX_SIZE 8192
 #define CPU_MATRIX_SIZE 2048
 
 void mm_All(const int n, const double *A, const double *B, double *C)

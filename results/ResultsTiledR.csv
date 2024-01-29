@@ -1,0 +1,9 @@
+MatrixSize,Technique,Time
+2048, Naive, 0.004096
+2048, Tiled, 0.002208
+4096, Naive, 0.006144
+4096, Tiled, 0.004064
+8192, Naive, 0.004192
+8192, Tiled, 0.002464
+16384, Naive, 0.005984
+16384, Tiled, 0.002048
